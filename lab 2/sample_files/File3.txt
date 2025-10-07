@@ -1,0 +1,7 @@
+Perform the following analyses on each text file in the directory:
+ Count the number of lines in each file.
+ Count the number of words in each file.
+ Identify the top N most common words (excluding common stop words like &quot;the,&quot; &quot;and,&quot;
+ quot;in,&quot; etc.) in each file.
+ Determine the average word length in each file.
+ Calculate the ratio of vowels to consonants in each file.

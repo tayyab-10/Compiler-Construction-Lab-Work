@@ -1,0 +1,3 @@
+The program should accept the following command-line arguments:
+ -d or --directory: The path to the directory containing the text files for analysis.
+ -o or --output: The path to the output report file.

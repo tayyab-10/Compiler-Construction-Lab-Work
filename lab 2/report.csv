@@ -1,0 +1,4 @@
+File Name,Lines,Words,Top 3 Words,Avg Word Length,Vowel/Consonant Ratio
+File1.txt,3,10,"line(2) file(1) from(1)",4.20,0.62
+File2.txt,3,33,"path(2) directory(2) output(2)",4.76,0.57
+File3.txt,7,70,"quot(6) file(6) each(6)",4.37,0.65
