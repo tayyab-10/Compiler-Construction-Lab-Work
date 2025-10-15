@@ -1,0 +1,13 @@
+program Example {
+    final int size = 10; // This is a constant declaration.
+    int x;
+    
+    void main() {
+        x = 5;
+        if (x <= size) {
+            read(x);
+        } else {
+            print(x, 1);
+        }
+    }
+}

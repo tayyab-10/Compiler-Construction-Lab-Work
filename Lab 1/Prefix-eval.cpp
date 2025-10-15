@@ -1,7 +1,3 @@
-
-// NOTE: You must provide the expression as a command line argument when running this program.
-// Example: prefix-eval.exe "+ 2 3"
-
 #include <iostream>
 #include <stack>
 #include <string>
@@ -10,7 +6,7 @@
 #include <cmath>
 using namespace std;
 
-// helper function to print NumBers
+// helper function to print NumBers  The pretty() function formats floating-point results by trimming extra zeros, so the output looks clean — for example, printing 5 instead of 5.000000.”
 string pretty(double v) {
     long long iv = (long long)v;
     if (fabs(v - iv) < 1e-9) return to_string(iv);
@@ -19,7 +15,7 @@ string pretty(double v) {
     oss.precision(6);
     oss << v;
     string s = oss.str();
-    while (!s.empty() && s.back() == '0') s.pop_back();
+    while (!s.empty() && s.back() == '0') s.pop_back();// trailing zeros ko nikal rhy hn 
     if (!s.empty() && s.back() == '.') s.pop_back();
     return s;
 }

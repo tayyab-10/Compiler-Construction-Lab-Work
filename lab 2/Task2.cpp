@@ -90,7 +90,7 @@ int main() {
                 }
 
                 // Find top 3 most common words
-                vector<pair<string, int>> freqVec(wordFrequency.begin(), wordFrequency.end());
+                vector<pair<string, int>> freqVec(wordFrequency.begin(), wordFrequency.end()); //convert to vector for sorting 
                 sort(freqVec.begin(), freqVec.end(), [](auto &a, auto &b) {
                     return a.second > b.second;
                 });

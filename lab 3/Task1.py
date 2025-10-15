@@ -32,7 +32,7 @@ def fill_buffer():
         # Acquire lock before writing to buffer
         with buffer_lock:
             current_buffer = buffer_A if active_buffer == 'A' else buffer_B
-            current_buffer.extend(list(user_input + " "))
+            current_buffer.extend(list(user_input + " "))  # list ch ma convert kr rhi ha 
 
             # When buffer is full, signal consumer
             if len(current_buffer) >= BUFFER_SIZE:
@@ -42,7 +42,7 @@ def fill_buffer():
         time.sleep(0.5)  # Simulate slight delay in input
 
 
-# --- Step 3: Consumer thread (processes the buffer) ---
+# --- Step 3: Consumer thread (processes the buffer)
 def process_data():
     global active_buffer
 
