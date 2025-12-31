@@ -2,7 +2,7 @@ import threading
 import time
 
 # --- Step 1: Define buffer settings ---
-BUFFER_SIZE = 20
+BUFFER_SIZE = 10
 buffer_A = []
 buffer_B = []
 active_buffer = 'A'  # Start with buffer A

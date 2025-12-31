@@ -80,18 +80,18 @@ void outputToken(const Token& token) {
     outputFile << "Line " << token.line << ": (" << tokenTypeNames[token.type] << ", \"" << token.lexeme << "\")" << endl;
 }
 
-// --- CORE LEXICAL ANALYZER FUNCTION (State-Based Approach) ---
+// --- CORE LEXICAL ANALYZER FUNCTION (State-Based Approach)
 
 Token getNextToken() {
     char ch;
     string lexeme = "";
 
-    // The main loop is the START state of the DFA (State 0).
+    // The main loop is the START state of the DFA 
     while (inputFile.get(ch)) {
-        // --- 1. HANDLE WHITESPACE and COMMENTS [cite: 125, 126, 151] ---
+        // --- 1. HANDLE WHITESPACE and COMMENTS 
         // Whitespace handling (State 0 -> State 0)
         if (isspace(ch)) {
-            if (ch == '\n') {   // increment es liye kr rhy hn kyn ky hamara lookahead sae line ki position pr ho 
+            if (ch == '\n') {   
                 currentLine++; // Track line numbers for error reporting.
             }
             continue; // Ignore whitespace and loop back to START state.
@@ -108,14 +108,14 @@ Token getNextToken() {
             inputFile.unget();
 
             // Check if the recognized lexeme is a keyword or an identifier[cite: 129, 130].
-            if (keywords.count(lexeme)) {  // map ma agr lexeme exist krta hua toh retrun kr dyn gn 
+            if (keywords.count(lexeme)) {  
                 return {keywords[lexeme], lexeme, currentLine};
             } else {
                 return {IDENTIFIER, lexeme, currentLine};
             }
         }
 
-        // --- 3. START OF NUMBER CONSTANT (State 2) [cite: 124, 125, 131, 132] ---
+        // --- 3. START OF NUMBER CONSTANT (State 2)
         if (isdigit(ch)) {
             lexeme += ch;
             // Loop until a non-digit is encountered
@@ -126,8 +126,8 @@ Token getNextToken() {
             return {NUMBER_CONST, lexeme, currentLine};
         }
 
-        // --- 4. START OF CHARACTER CONSTANT (State 3-4) [cite: 31, 132] ---
-        if (ch == '\'') { // Start Quote      es block ma hm char constant ko handle kr rhy hn jesy ky 'a' ya '1'
+        // --- 4. START OF CHARACTER CONSTANT (State 3-4) 
+        if (ch == '\'') { // Start Quote     
             if (inputFile.get(ch) && ch != '\n') {
                 lexeme += ch; // The character itself
                 if (inputFile.get(ch) && ch == '\'') { // End Quote
@@ -138,7 +138,7 @@ Token getNextToken() {
             return {TOKEN_ERROR, "Malformed char constant", currentLine};
         }
 
-        // --- 5. START OF OPERATORS / COMMENTS (State 5-9) ---
+        // --- 5. START OF OPERATORS / COMMENTS (State 5-9) 
         // The most complex section involving multi-character tokens
         switch (ch) {
             case '+': return {OP_PLUS, "+", currentLine};
@@ -157,15 +157,15 @@ Token getNextToken() {
             case '.': return {SEP_DOT, ".", currentLine};
             
             case '=':
-                // Check for '==' (Relational Equal) [cite: 140]
+                // Check for '==' (Relational Equal)
                 if (inputFile.get(ch) && ch == '=') {
                     return {OP_EQUAL, "==", currentLine};
                 }
-                inputFile.unget(); // Otherwise, it's a single '=' (Assignment)[cite: 147].
+                inputFile.unget(); // Otherwise, it's a single '=' 
                 return {OP_ASSIGN, "=", currentLine};
             
             case '!':
-                // Check for '!=' (Not Equal) [cite: 141]
+                // Check for '!=' (Not Equal) 
                 if (inputFile.get(ch) && ch == '=') {
                     return {OP_NOT_EQUAL, "!=", currentLine};
                 }
@@ -173,7 +173,7 @@ Token getNextToken() {
                 return {TOKEN_ERROR, "Invalid token !", currentLine};
 
             case '>':
-                // Check for '>=' (Greater or Equal) [cite: 143]
+                // Check for '>=' (Greater or Equal) 
                 if (inputFile.get(ch) && ch == '=') {
                     return {OP_GE, ">=", currentLine};
                 }
@@ -185,7 +185,7 @@ Token getNextToken() {
                 if (inputFile.get(ch) && ch == '=') {
                     return {OP_LE, "<=", currentLine};
                 }
-                inputFile.unget(); // Otherwise, it's a single '<' (Less Than)[cite: 145].
+                inputFile.unget(); // Otherwise, it's a single '<' (Less Than)
                 return {OP_LT, "<", currentLine};
                 
             case '/':
@@ -199,7 +199,7 @@ Token getNextToken() {
                     // Loop back to the START state to find the next token.
                     continue; 
                 }
-                inputFile.unget(); // Otherwise, it's a single '/' (Division)[cite: 143].
+                inputFile.unget(); // Otherwise, it's a single '/' (Division)
                 return {OP_DIV, "/", currentLine};
 
             default:
@@ -216,7 +216,7 @@ Token getNextToken() {
 int main() {
  
     string inputFileName = "source.mj";
-    string outputFileName = "tokens.txt";
+    string outputFileName = "tokens2.txt";
 
     // 2. Open Files
     inputFile.open(inputFileName);

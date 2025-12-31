@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<structure>
+<type>fa</type>
+<automaton>
+<state id="0" name="start"><initial/></state>
+<state id="1" name="acc"><final/></state>
+<transition><from>0</from><to>1</to><read>+</read></transition>
+<transition><from>0</from><to>1</to><read>-</read></transition>
+<transition><from>0</from><to>1</to><read>*</read></transition>
+<transition><from>0</from><to>1</to><read>/</read></transition>
+<transition><from>0</from><to>1</to><read>%</read></transition>
+<transition><from>0</from><to>1</to><read>=</read></transition>
+<transition><from>0</from><to>1</to><read>==</read></transition>
+<transition><from>0</from><to>1</to><read>!=</read></transition>
+<transition><from>0</from><to>1</to><read>></read></transition>
+<transition><from>0</from><to>1</to><read>>=</read></transition>
+<transition><from>0</from><to>1</to><read><</read></transition>
+<transition><from>0</from><to>1</to><read><=</read></transition>
+</automaton>
+</structure>
