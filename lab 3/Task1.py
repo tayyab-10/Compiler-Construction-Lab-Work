@@ -10,7 +10,6 @@ active_buffer = 'A'  # Start with buffer A
 # Lock and condition for synchronization
 buffer_lock = threading.Lock()
 buffer_filled = threading.Condition(buffer_lock)
-
 # Flag to stop the program gracefully
 stop_program = False
 
